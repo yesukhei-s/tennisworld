@@ -14,7 +14,7 @@
 
     <%# navbar %>
     <div class="relative flex items-center gap-x-4 xl:gap-x-8 w-full justify-center lg:justify-start">
-      <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 w-52' do %>
+      <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 lg:w-52 w-[150px]' do %>
         <%= image_tag "tennisworld_logo.png" %>
       <% end %>
       <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex lg:ml-60 xl:ml-80' } %>
