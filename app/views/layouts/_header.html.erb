@@ -1,5 +1,5 @@
-<header class="grid-container w-full py-1 px-5 lg:px-6 2xl:px-10">
-  <div class="col-span-full flex items-center justify-center max-h-[70px] lg:justify-between lg:gap-x-6">
+<header class="grid-container w-full border-b lg:gap-y-0">
+  <div class="col-span-full flex items-center justify-center max-h-[70px] lg:justify-between lg:gap-x-6  py-4 px-5 lg:px-20 border-b">
 
     <%# hamburger bar %>
     <div class="flex items-center justify-center w-8 h-8 py-10 lg:py-2 lg:px-10 lg:hidden">
@@ -14,26 +14,30 @@
 
     <%# navbar %>
     <div class="relative flex items-center gap-x-4 xl:gap-x-8 w-full justify-center lg:justify-start">
-      <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3' do %>
-        <%= image_tag "logo_small_no_label.svg" %>
-        <span class="uppercase font-sans font-semibold mb-0 dark:text-sand text-body lg:text-body-sm xl:text-body-sm"><%= Spree::Store.default.name %></span>
+      <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 w-52' do %>
+        <%= image_tag "tennisworld_logo.png" %>
       <% end %>
+      <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex lg:ml-60 xl:ml-80' } %>
+
       <% categories = taxonomies.first %>
       <% navMobileClasses = '
         categories-menu bg-white
-        fixed top-0 left-0 z-40 w-full min-w-[270px] h-full
+        fixed top-0 left-0 z-40 max-w-[80%] min-w-[270px] h-full
         transition-transform duration-300 ease-in-out -translate-x-full
         flex flex-col
-        lg:bg-sand dark:bg-black dark:text-white text-black dark:lg:text-sand
+        dark:bg-black dark:text-white text-black dark:lg:text-sand
         px-8 py-5 text-body-sm'
       %>
       <% navDesktopClasses = '
-        lg:relative lg:z-0 lg:h-auto lg:max-h-[70px] lg:transition-none lg:translate-x-0 w-full
+        lg:relative lg:z-0 lg:h-14 lg:py-3 lg:px-20 lg:max-h-[70px] lg:transition-none lg:translate-x-0 lg:min-w-[1024px] xl:min-w-[1280px]
         lg:flex-row lg:items-center
-        dark:lg:text-sand
-        lg:p-0'
+        dark:lg:text-sand'
       %>
 
+    </div>
+    <%= render 'layouts/top_bar', taxons: taxons, taxon: taxon %>
+    
+  </div>
       <nav id="nav" class="<%= navMobileClasses + navDesktopClasses %> text-" data-drawer-target="drawer">
         <button type="button" class="w-8 h-8 self-start -ml-[5px] lg:hidden" aria-controls="navbar-default" aria-expanded="false" data-action="click->drawer#toggle">
           <span class="sr-only">Close main menu</span>
@@ -46,28 +50,33 @@
           <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'lg:hidden', search_input_id: 'mobile-search-input-area', results_list_id: 'autocomplete-results-mobile' } %>
         </div>
 
-        <% cache [I18n.locale, categories, taxon] do %>
-          <%= render(TaxonsTreeComponent.new(
-            root_taxon: categories.root,
-            current_taxon: taxon,
-            max_level: 2,
-            item_classes: 'font-sans-md',
-            current_item_classes: 'text-solidus-red',
-            )) if categories %>
-        <% end %>
-
+        <%# <div class="flex justify-between"> %>
+        <div class="">
+          <% cache [I18n.locale, categories, taxon] do %>
+            <%= render(TaxonsTreeComponent.new(
+              root_taxon: categories.root,
+              current_taxon: taxon,
+              max_level: 2,
+              item_classes: 'font-sans-md',
+              current_item_classes: 'text-solidus-red',
+              )) if categories %>
+          <% end %>
+        </div>
+        <%# <p class="px-2 py-1 rounded bg-red-400 text-white ml-4"><a href="#">Хямдралтай</a></p> %>
+        <%# </div> %>
         
       </nav>
-    </div>
-    <%= render 'layouts/top_bar', taxons: taxons, taxon: taxon %>
-    
-  </div>
 </header>
 
 <style>
   #nav ul li {
     <%# width: 100%; %>
     position: relative;
+    margin-right: 30px;
+  }
+  #nav ul li a {
+    font-size: 0.9rem;
+    font-weight: 300;
   }
   #nav ul li ul {
     display: none;
@@ -87,12 +96,12 @@
     padding: 8px 20px;
     text-align: left;
   }
-    #nav ul li ul li:hover {
-      background: #ededed;
+  #nav ul li ul li:hover {
+    background: #ededed;
     }
 
-    #nav ul li ul li:first-child {
+  #nav ul li ul li:first-child {
     margin-top: 10px;
-    }
+  }
 </style>
 

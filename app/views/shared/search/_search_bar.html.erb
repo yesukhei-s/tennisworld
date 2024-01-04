@@ -17,7 +17,7 @@
 
     <div class="flex bg-transparent !border border-gray-300 py-0 text-sm w-full lg:min-w-[200px] focus:ring-0 focus:border-purple-600 px-4 rounded-full">
 
-      <%= search_field_tag :keywords, params[:keywords], placeholder: "Search", id: form_id, class: 'bg-transparent border-none focus:ring-0 w-full', autocomplete: "off",
+      <%= search_field_tag :keywords, params[:keywords], placeholder: "Хайх", id: form_id, class: 'bg-transparent border-none focus:ring-0 w-full', autocomplete: "off",
         "data-action": "input->search#fetchResults
                         keydown.down->search#nextResult
                         keydown.up->search#previousResult
