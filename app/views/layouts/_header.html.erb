@@ -51,14 +51,14 @@
         </div>
 
         <%# <div class="flex justify-between"> %>
-        <div class="">
+        <div class="nav-text">
           <% cache [I18n.locale, categories, taxon] do %>
             <%= render(TaxonsTreeComponent.new(
               root_taxon: categories.root,
               current_taxon: taxon,
               max_level: 2,
               item_classes: 'font-sans-md',
-              current_item_classes: 'text-solidus-red',
+              current_item_classes: 'text-purple-600',
               )) if categories %>
           <% end %>
         </div>
@@ -74,24 +74,29 @@
     position: relative;
     margin-right: 30px;
   }
+  #nav img {
+    width: 10px;
+  }
   #nav ul li a {
     font-size: 0.9rem;
     font-weight: 300;
   }
-  #nav ul li ul {
+  .toggle-menu {
+    display: block !important;
+  }
+  .hide{
     display: none;
   }
-  #nav ul li:hover > ul {
+  #nav ul li ul {
     width: 100px;
     height: auto;
     position: absolute;
-    display: block;
+    display: none;
     top: 20px;
   }
   #nav ul li ul li {
     background: #f7f7f7;
     width: 150px;
-
     margin-left: 0;
     padding: 8px 20px;
     text-align: left;
@@ -103,5 +108,57 @@
   #nav ul li ul li:first-child {
     margin-top: 10px;
   }
+
+  .has-child {
+    position: relative;
+  }
+  .arrow {
+  position: absolute;
+  top: 5px;
+  right: -25px;
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-right: 0.1em solid black;
+  border-top: 0.1em solid black;
+  transform: rotate(135deg);
+  margin-right: 0.5em;
+  margin-left: 0.50em;
+  cursor: pointer;
+  }
+
+  @media only screen and (max-width: 991px) {
+    #nav ul li ul {
+      width: 100%;
+      height: auto;
+      position: relative;
+      display: none;
+      top: 0px;
+    }
+    #nav ul li ul li {
+      margin: 0;
+      width: 100%;
+    }
+  }
 </style>
+
+<script>
+  let parentCategory = document.querySelectorAll(".has-child");
+
+  //dooshoo sumnii html insert
+  parentCategory.forEach((el) => {
+    el.innerHTML += "<span class='arrow'></span>";
+  })
+
+  //dooshoo sum(.arrow) darahad toggle
+  parentCategory.forEach((el) => {
+      let arrow = el.querySelector('.arrow'); 
+      arrow.addEventListener('click', function() {
+          let ulElement = el.querySelector('ul'); 
+          ulElement.classList.toggle('toggle-menu');
+      });
+  });
+</script>
+
 

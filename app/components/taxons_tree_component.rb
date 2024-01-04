@@ -44,21 +44,36 @@ class TaxonsTreeComponent < ViewComponent::Base
     content_tag(:h6, title, class: title_classes) if title
   end
 
-  def tree(root_taxon:, item_classes:, current_item_classes:, max_level:)
+  def tree(root_taxon:, item_classes:, current_item_classes:, max_level:, current_level: 0)
     return if max_level < 1 || root_taxon.children.empty?
-
+  
     content_tag :ul do
       taxons = root_taxon.children.map do |taxon|
         classes = item_classes
         classes = [classes, current_item_classes].join(' ') if current_item_classes && current_taxon&.self_and_ancestors&.include?(taxon)
-
-        content_tag :li, class: classes do
+  
+        unless taxon.children.empty?
+          classes += " has-child"
+        end
+        append_svg = !taxon.children.empty?
+  
+        li_options = { class: classes }
+        li_options[:id] = "child" if current_level == 1
+  
+        content_tag :li, li_options do
           link_to(taxon.name, helpers.taxon_seo_url(taxon)) +
-            tree(root_taxon: taxon, item_classes: item_classes, current_item_classes: current_item_classes, max_level: max_level - 1)
+            tree(root_taxon: taxon, item_classes: item_classes, current_item_classes: current_item_classes, max_level: max_level - 1, current_level: current_level + 1)
         end
       end
-
+  
       safe_join([taxons], "\n")
     end
   end
+  
+  
+  
+  
+  
+  
+  
 end
