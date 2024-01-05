@@ -1,4 +1,6 @@
-<header class="grid-container w-full border-b lg:gap-y-0">
+<header class="grid-container w-full lg:gap-y-0">
+
+  <%# navbar deed heseg%>
   <div class="col-span-full flex items-center justify-center max-h-[70px] lg:justify-between lg:gap-x-6  py-4 px-5 lg:px-20 border-b">
 
     <%# hamburger bar %>
@@ -12,71 +14,133 @@
       </button>
     </div>
 
-    <%# navbar %>
-    <div class="relative flex items-center gap-x-4 xl:gap-x-8 w-full justify-center lg:justify-start">
+    <%# navbar (logo, search, baruun icons)%>
+    <div class="relative flex items-center gap-x-4 xl:gap-x-8 w-full justify-between lg:justify-between">
       
       <%# logo %>
-      <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 lg:w-52 w-[150px]' do %>
+      <%= link_to root_path, class: 'absolute lg:relative left-[45%] lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 lg:w-52 w-[150px]' do %>
         <%= image_tag "tennisworld_logo.png" %>
       <% end %>
 
       <%# search bar %>
-      <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex lg:ml-60 xl:ml-80' } %>
+      <div class="hidden lg:flex">
+        <%
+          base_classes = "flex items-center gap-x-1"
+          form_classes = defined?(locals) && locals[:additional_classes].present? ? "#{base_classes} #{locals[:additional_classes]}" : base_classes
+          form_id = defined?(locals) && locals[:search_input_id].present? ? locals[:search_input_id] : 'search-input-area'
+          results_list_id = defined?(locals) && locals[:results_list_id].present? ? locals[:results_list_id] : 'autocomplete-results'
+        %>
 
-      <% categories = taxonomies.first %>
-      <% navMobileClasses = '
-        categories-menu bg-white
-        fixed top-0 left-0 z-40 max-w-[80%] min-w-[270px] h-full
-        transition-transform duration-300 ease-in-out -translate-x-full
-        flex flex-col
-        dark:bg-black dark:text-white text-black dark:lg:text-sand
-        px-8 py-5 text-body-sm'
-      %>
-      <% navDesktopClasses = '
-        lg:relative lg:z-0 lg:h-14 lg:py-3 lg:px-20 lg:max-h-[70px] lg:transition-none lg:translate-x-0 lg:min-w-[1024px] xl:min-w-[1280px]
-        lg:flex-row lg:items-center
-        dark:lg:text-sand'
-      %>
+        <%= content_tag :div,
+          "data-controller": "search",
+          "data-search-current-class": "text-primary" do %>
+          <%= form_tag autocomplete_results_path, method: :get, class: form_classes, id: "search-form",
+              "data-turbo": true,
+              "data-turbo-stream": true,
+              "data-search-target": "form" do %>
 
+            <div class="flex bg-transparent !border border-gray-300 py-0 text-sm w-full lg:min-w-[200px] focus:ring-0 focus:border-purple-600 px-4 rounded-full">
+              <%= search_field_tag :keywords, params[:keywords], placeholder: "Хайх", id: form_id, class: 'bg-transparent border-none focus:ring-0 w-full', autocomplete: "off",
+                "data-action": "input->search#fetchResults
+                                keydown.down->search#nextResult
+                                keydown.up->search#previousResult
+                                keydown.enter->search#openResult:prevent:stop
+                                keydown.esc->search#reset:prevent:stop
+                                click@window->search#focusOut",
+                "data-search-target": "keywords" %>
+
+                <%= button_tag type: 'submit', class: "search-bar__button right-0", title: 'Search', "data-search-id-param": form_id do %>
+                  <svg class='w-6 h-6 fill-gray-500 dark:fill-white'>
+                    <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-search-2-line"></use>
+                  </svg>
+                <% end %>
+              <% end %>
+            </div>
+          <div id="<%= results_list_id %>" class="hidden" data-search-target="results"></div>
+        <% end %>
+      </div>
+
+
+      <%# top bar (baruun) %>
+      <div class="absolute right-0 lg:relative">
+          <div class="relative flex items-center" data-controller="top-bar">
+            <div class="flex items-center  xl:gap-x-6">
+              <div class='relative w-auto h-6 mr-3 xl:mr-0'>
+                <div class="xl:flex">
+                  <svg class='w-6 h-6 fill-black dark:fill-white'>
+                    <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-shopping-cart-2-line"></use>
+                  </svg>
+                
+                  <div id="link-to-cart" class="absolute top-0 left-0 w-full h-full" data-top-bar-target="cartLink">
+                    <noscript>
+                      <%= link_to t('spree.cart'), cart_path %>
+                    </noscript>
+                  </div>
+
+                </div>
+              </div>
+              <p class="hidden xl:block xl:text-xs xl:-ml-4"><a href="/cart" style="font-size:0.8rem">Сагс</a></p>
+
+              <div class="relative w-auto h-6">
+                <%= link_to spree_current_user ? account_path : login_path, title: spree_current_user ? 'Account' : 'Login' do %>
+                  <svg class='w-6 h-6 fill-black dark:fill-white'>
+                    <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-user-line"></use>
+                  </svg>
+              </div>
+              <p class="hidden xl:block xl:text-xs xl:-ml-10"> <a href="/login" style="font-size:0.8rem">Нэвтрэх</a></p>
+              <% end %>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <%# top bar (baruun) %>
-    <%= render 'layouts/top_bar', taxons: taxons, taxon: taxon %>
-    
   </div>
-      <nav id="nav" class="<%= navMobileClasses + navDesktopClasses %> text-" data-drawer-target="drawer">
-        <button type="button" class="w-8 h-8 self-start -ml-[5px] lg:hidden" aria-controls="navbar-default" aria-expanded="false" data-action="click->drawer#toggle">
-          <span class="sr-only">Close main menu</span>
-          <svg class='w-8 h-8 fill-gray-500'>
-            <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-line"></use>
-          </svg>
-        </button>
 
-        <div class="block my-12">
-          <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'lg:hidden', search_input_id: 'mobile-search-input-area', results_list_id: 'autocomplete-results-mobile' } %>
-        </div>
+  <%# navbar dood heseg (category) %>
+  <% categories = taxonomies.first %>
+  <% navMobileClasses = '
+    categories-menu bg-white
+    fixed top-0 left-0 z-40 max-w-[80%] min-w-[270px] h-full
+    transition-transform duration-300 ease-in-out -translate-x-full
+    flex flex-col
+    dark:bg-black dark:text-white text-black dark:lg:text-sand
+    px-8 py-5 text-body-sm'
+  %>
+  <% navDesktopClasses = '
+    lg:absolute lg:top-[70px] lg:z-0 lg:h-14 lg:py-3 lg:px-20 lg:max-h-[70px] lg:transition-none lg:translate-x-0 lg:min-w-full lg:border-b
+    lg:flex-row lg:items-center
+    dark:lg:text-sand'
+  %>
+      
+  <nav id="nav" class="<%= navMobileClasses + navDesktopClasses %> text-" data-drawer-target="drawer">
+    <button type="button" class="w-8 h-8 self-start -ml-[5px] lg:hidden" aria-controls="navbar-default" aria-expanded="false" data-action="click->drawer#toggle">
+      <span class="sr-only">Close main menu</span>
+      <svg class='w-8 h-8 fill-gray-500'>
+        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-line"></use>
+      </svg>
+    </button>
 
-        <%# <div class="flex justify-between"> %>
-        <div class="nav-text">
-          <% cache [I18n.locale, categories, taxon] do %>
-            <%= render(TaxonsTreeComponent.new(
-              root_taxon: categories.root,
-              current_taxon: taxon,
-              max_level: 2,
-              item_classes: 'font-sans-md',
-              current_item_classes: 'text-purple-600',
-              )) if categories %>
-          <% end %>
-        </div>
-        <%# <p class="px-2 py-1 rounded bg-red-400 text-white ml-4"><a href="#">Хямдралтай</a></p> %>
-        <%# </div> %>
-        
-      </nav>
+    <div class="block my-12">
+      <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'lg:hidden', search_input_id: 'mobile-search-input-area', results_list_id: 'autocomplete-results-mobile' } %>
+    </div>
+
+    <div class="nav-text flex flex:col lg:flex-row justify-between w-full lg:relative">
+      <% cache [I18n.locale, categories, taxon] do %>
+        <%= render(TaxonsTreeComponent.new(
+          root_taxon: categories.root,
+          current_taxon: taxon,
+          max_level: 2,
+          item_classes: 'font-sans-md',
+          current_item_classes: 'text-purple-600',
+          )) if categories %>
+      <% end %>
+    </div>
+      <div class="relative -bottom-10 lg:bottom-0 uppercase text-white font-bold"><a href="#" class="py-2 px-2 bg-lime-500 hover:bg-lime-600 rounded" style="font-size: 0.6rem">Хямдрал</a></div>
+  </nav>
 </header>
 
 <style>
   #nav ul li {
-    <%# width: 100%; %>
     position: relative;
     margin-right: 30px;
   }
@@ -144,6 +208,9 @@
     }
     #nav ul li ul li {
       margin: 0;
+      width: 100%;
+    }
+    #nav ul {
       width: 100%;
     }
   }
