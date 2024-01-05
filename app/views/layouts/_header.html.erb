@@ -14,9 +14,13 @@
 
     <%# navbar %>
     <div class="relative flex items-center gap-x-4 xl:gap-x-8 w-full justify-center lg:justify-start">
+      
+      <%# logo %>
       <%= link_to root_path, class: 'absolute lg:relative left-1/2 lg:left-0 lg:-translate-x-0 -translate-x-1/2 flex items-center space-x-3 lg:w-52 w-[150px]' do %>
         <%= image_tag "tennisworld_logo.png" %>
       <% end %>
+
+      <%# search bar %>
       <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'hidden lg:flex lg:ml-60 xl:ml-80' } %>
 
       <% categories = taxonomies.first %>
@@ -35,6 +39,8 @@
       %>
 
     </div>
+
+    <%# top bar (baruun) %>
     <%= render 'layouts/top_bar', taxons: taxons, taxon: taxon %>
     
   </div>
@@ -143,22 +149,55 @@
   }
 </style>
 
+
 <script>
   let parentCategory = document.querySelectorAll(".has-child");
 
-  //dooshoo sumnii html insert
+  // 各要素に.arrowを追加
   parentCategory.forEach((el) => {
     el.innerHTML += "<span class='arrow'></span>";
-  })
+  });
 
-  //dooshoo sum(.arrow) darahad toggle
+  // .arrow要素にクリックイベントを追加
   parentCategory.forEach((el) => {
-      let arrow = el.querySelector('.arrow'); 
-      arrow.addEventListener('click', function() {
-          let ulElement = el.querySelector('ul'); 
-          ulElement.classList.toggle('toggle-menu');
+    let arrow = el.querySelector('.arrow');
+    arrow.addEventListener('click', function(event) {
+      // 他の.arrowをクリックしたとき
+      if (event.target !== arrow) {
+        return;
+      }
+
+      // すべての.has-child要素からtoggle-menuクラスを削除
+      parentCategory.forEach((otherEl) => {
+        if (otherEl !== el) {
+          let otherUlElement = otherEl.querySelector('ul');
+          if (otherUlElement) {
+            otherUlElement.classList.remove('toggle-menu');
+          }
+        }
       });
+
+      // クリックされた.arrowの親要素からtoggle-menuクラスをトグル
+      let ulElement = el.querySelector('ul');
+      if (ulElement) {
+        ulElement.classList.toggle('toggle-menu');
+      }
+    });
+  });
+
+  // ドキュメント全体にクリックイベントを追加
+  document.addEventListener('click', function(event) {
+    // クリックされた要素が.has-child要素でない場合、すべての.toggle-menuクラスを削除
+    if (!event.target.closest('.has-child')) {
+      parentCategory.forEach((el) => {
+        let ulElement = el.querySelector('ul');
+        if (ulElement) {
+          ulElement.classList.remove('toggle-menu');
+        }
+      });
+    }
   });
 </script>
+
 
 
