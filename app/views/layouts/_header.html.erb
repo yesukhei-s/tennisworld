@@ -87,7 +87,11 @@
                     <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-user-line"></use>
                   </svg>
               </div>
-              <p class="hidden xl:block xl:text-xs xl:-ml-10"> <a href="/login" style="font-size:0.8rem">Нэвтрэх</a></p>
+
+              <p class="hidden xl:block xl:text-xs xl:-ml-10">
+                <%= spree_current_user ? link_to('Миний профайл', account_path, style: 'font-size:0.8rem') : link_to('Нэвтрэх', login_path, style: 'font-size:0.8rem') %>
+              </p>
+
               <% end %>
           </div>
         </div>
@@ -113,15 +117,39 @@
   %>
       
   <nav id="nav" class="<%= navMobileClasses + navDesktopClasses %> text-" data-drawer-target="drawer">
-    <button type="button" class="w-8 h-8 self-start -ml-[5px] lg:hidden" aria-controls="navbar-default" aria-expanded="false" data-action="click->drawer#toggle">
-      <span class="sr-only">Close main menu</span>
-      <svg class='w-8 h-8 fill-gray-500'>
-        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-line"></use>
-      </svg>
-    </button>
+    
+    <div class="flex justify-between items-center w-full h-auto pt-5 lg:hidden">
+      <%= image_tag "tennisworld_logo.png", class: "!w-2/3 max-w-[200px]" %>
+      <button type="button" class="w-8 h-8 self-start -ml-[5px] lg:hidden" aria-controls="navbar-default" aria-expanded="false" data-action="click->drawer#toggle">
+        <span class="sr-only">Close main menu</span>
+        <svg class='w-8 h-8 fill-gray-500'>
+          <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-close-line"></use>
+        </svg>
+      </button>
+    </div>
 
-    <div class="block my-12">
+    
+
+    <div class="block my-10">
       <%= render 'shared/search/search_bar', taxons: taxons, taxon: taxon, :locals => { :additional_classes => 'lg:hidden', search_input_id: 'mobile-search-input-area', results_list_id: 'autocomplete-results-mobile' } %>
+    </div>
+
+    <div class="flex flex-col items-start lg:hidden gap-y-5 mb-10 font-bold font-sans-md">
+      <div class="flex items-center gap-x-2">
+          <svg class='w-6 h-6 fill-purple-600 dark:fill-white'>
+            <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-shopping-cart-2-line"></use>
+          </svg>
+        <a href="/cart">Сагс</a>
+      </div>
+      <div class="flex items-center gap-x-2">
+          <svg class='w-6 h-6 fill-purple-600 dark:fill-white'>
+            <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-user-line"></use>
+          </svg>
+
+          <p class="text-xs">
+            <%= spree_current_user ? link_to('Миний профайл', account_path, style: 'font-size:0.8rem') : link_to('Нэвтрэх', login_path, style: 'font-size:0.8rem') %>
+          </p>
+      </div>
     </div>
 
     <div class="nav-text flex flex:col lg:flex-row justify-between w-full lg:relative">
@@ -135,7 +163,8 @@
           )) if categories %>
       <% end %>
     </div>
-      <div class="relative -bottom-10 lg:bottom-0 uppercase text-white font-bold"><a href="#" class="py-2 px-2 bg-lime-500 hover:bg-lime-600 rounded" style="font-size: 0.6rem">Хямдрал</a></div>
+    <div class="relative -bottom-10 lg:bottom-0 uppercase text-white font-bold"><a href="#" class="py-2 px-2 bg-lime-500 hover:bg-lime-600 rounded" style="font-size: 0.6rem">Хямдрал</a></div>
+    <p class="absolute bottom-8 text-center text-gray-200 w-4/5 lg:hidden">tennisworld.mn</p>
   </nav>
 </header>
 
