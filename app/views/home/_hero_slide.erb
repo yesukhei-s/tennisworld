@@ -1,17 +1,18 @@
 <div id="wrapper" class="h-[70vh] flex rounded-10 border-3 border-black pb-5 justify-around items-center gap-5">
-    <div id="image-container" class="h-full w-screen overflow-hidden py-0 px-20">
-        <div id="image-carousel" class="flex h-full w-8/10 justify-between relative items-center">
+    <div id="image-container" class="h-full w-screen overflow-hidden py-0 px-0 lg:px-20">
+        <div id="image-carousel" class="flex h-full w-full lg:w-8/10 justify-between relative items-end lg:items-center">
 
           <div>
-            <button class="w-14 h-14 active absolute z-20 cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full -translate-y-6 transition duration-200"  id="prev" onclick="prev()">
+            <button class="w-14 h-14 active absolute z-20 cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full  transition duration-200 -translate-y-14 translate-x-28 sm:translate-x-32 md:translate-x-28 lg:translate-x-0 lg:-translate-y-6"  id="prev" onclick="prev()">
               <i class="fa-solid fa-arrow-left"></i>
             </button>  
           </div>
 
 
+          <%# item 1 %>
           <div class="slide-img w-full h-full relative transition duration-1000">
-            <%= image_tag "hero/1.png", class: "h-full w-full object-cover rounded-[30px] absolute px-6 py-6" %>
-            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 z-10 flex flex-col items-start px-8 sm:px-24">
+            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
+            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 flex flex-col items-start px-8 sm:px-24">
               <div class="px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
               <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance every day.</h1>
               <p class="text-rhino-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
@@ -20,11 +21,10 @@
             </div>
           </div>
 
-
+          <%# item 2 %>
           <div class="h-full w-full slide-img absolute transition duration-1000">
-            <img class="object-cover !w-full h-full rounded-[30px] absolute inset-0  px-6 py-6" src="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="">
-            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 z-10 flex flex-col items-start px-8 sm:px-24">
+            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
+            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 flex flex-col items-start px-8 sm:px-24">
               <div class="px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
               <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance every day.</h1>
               <p class="text-rhino-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
@@ -32,10 +32,11 @@
               <a class="py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
             </div>
           </div>
+
+          <%# item 3 %>
           <div class="h-full w-full slide-img absolute transition duration-1000">
-            <img class="object-cover !w-full h-full rounded-[30px] absolute inset-0 px-6 py-6" src="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="">
-            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 z-10 flex flex-col items-start px-8 sm:px-24">
+            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
+            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 flex flex-col items-start px-8 sm:px-24">
               <div class="px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
               <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance every day.</h1>
               <p class="text-rhino-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
@@ -43,10 +44,11 @@
               <a class="py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
             </div>
           </div>
+
+          <%# item 4 %>
           <div class="h-full w-full slide-img absolute transition duration-1000">
-            <img class="object-cover !w-full h-full rounded-[30px] absolute inset-0 px-6 py-6" src="https://plus.unsplash.com/premium_photo-1679079456083-9f288e224e96?q=80&w=1770&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                alt="">
-            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 z-10 flex flex-col items-start px-8 sm:px-24">
+            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
+            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-14 flex flex-col items-start px-8 sm:px-24">
               <div class="px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
               <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance every day.</h1>
               <p class="text-rhino-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
@@ -55,10 +57,9 @@
             </div>
           </div>
 
-
-
+          
           <div>
-            <button class="w-14 h-14 active absolute z-50 cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full -translate-y-6 -translate-x-14 transition duration-200" id="next" onclick="next()">
+            <button class="w-14 h-14 active absolute cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full -translate-x-40 sm:-translate-x-44 md:-translate-x-40 -translate-y-14 lg:-translate-y-6 lg:-translate-x-14 transition duration-200" id="next" onclick="next()">
               <i class="fa-solid fa-arrow-right"></i>
             </button>
           </div>
@@ -71,45 +72,44 @@
 
 <script>
 
-const wrapper = document.querySelector('#wrapper')
-const carousel = document.querySelector('#image-carousel')
-const images = document.querySelectorAll('.slide-img')
-const btn = document.querySelectorAll('button')
-const previous = document.querySelector('#prev')
-const nxt = document.querySelector('#next')
+  const wrapper = document.querySelector('#wrapper')
+  const carousel = document.querySelector('#image-carousel')
+  const images = document.querySelectorAll('.slide-img')
+  const btn = document.querySelectorAll('button')
+  const previous = document.querySelector('#prev')
+  const nxt = document.querySelector('#next')
 
 
-images.forEach((slide,index)=>{
-    slide.style.left = `${index * 100}%`
-})
-let counter = 0;
+  images.forEach((slide,index)=>{
+      slide.style.left = `${index * 100}%`
+  })
+  let counter = 0;
 
-const slideImage = ()=>{
-    images.forEach(
-        (e) => {
-            e.style.transform = `translateX(-${counter*100}%)`
-        }
-    )
-}
+  const slideImage = ()=>{
+      images.forEach(
+          (e) => {
+              e.style.transform = `translateX(-${counter*100}%)`
+          }
+      )
+  }
 
+  const prev = ()=>{
+      if(counter > 0){
+          
+          counter --;
+          slideImage();
+          console.log(counter);
+          
+      }
+  }
+  const next = ()=>{
+      if(counter <= (images.length - 2)){
+          
+          counter ++;
+          slideImage();
+          console.log(counter);
+          
+      }
+  }
 
-
-const prev = ()=>{
-    if(counter > 0){
-        
-        counter --;
-        slideImage();
-        console.log(counter);
-        
-    }
-}
-const next = ()=>{
-    if(counter <= (images.length - 2)){
-        
-        counter ++;
-        slideImage();
-        console.log(counter);
-        
-    }
-}
 </script>
