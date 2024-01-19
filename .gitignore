@@ -40,3 +40,5 @@ app/assets/builds/solidus_admin/
 
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+.DS_Store
