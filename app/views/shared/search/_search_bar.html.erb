@@ -15,23 +15,26 @@
       "data-turbo-stream": true,
       "data-search-target": "form" do %>
 
-    <%= search_field_tag :keywords, params[:keywords], placeholder: "Search", id: form_id, class: 'bg-transparent !border-b border-gray-300 px-0 py-1 text-sm w-full lg:min-w-[200px] focus:ring-0 focus:border-b-red-500', autocomplete: "off",
-      "data-action": "input->search#fetchResults
-                      keydown.down->search#nextResult
-                      keydown.up->search#previousResult
-                      keydown.enter->search#openResult:prevent:stop
-                      keydown.esc->search#reset:prevent:stop
-                      click@window->search#focusOut",
-      "data-search-target": "keywords" %>
+    <div class="flex bg-transparent !border border-gray-300 py-0 text-sm w-full lg:min-w-[200px] focus:ring-0 focus:border-purple-600 px-4 rounded-full">
+
+      <%= search_field_tag :keywords, params[:keywords], placeholder: "Хайх", id: form_id, class: 'bg-transparent border-none focus:ring-0 w-full', autocomplete: "off",
+        "data-action": "input->search#fetchResults
+                        keydown.down->search#nextResult
+                        keydown.up->search#previousResult
+                        keydown.enter->search#openResult:prevent:stop
+                        keydown.esc->search#reset:prevent:stop
+                        click@window->search#focusOut",
+        "data-search-target": "keywords" %>
 
 
-    <%= button_tag type: 'submit', class: "search-bar__button", title: 'Search', "data-search-id-param": form_id do %>
-      <svg class='w-6 h-6 fill-black dark:fill-white'>
-        <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-search-2-line"></use>
-      </svg>
-    <% end %>
-  <% end %>
+      <%= button_tag type: 'submit', class: "search-bar__button right-0", title: 'Search', "data-search-id-param": form_id do %>
+        <svg class='w-6 h-6 fill-gray-500 dark:fill-white'>
+          <use xlink:href="<%= image_path('remixicon.symbol.svg') %>#ri-search-2-line"></use>
+        </svg>
+      <% end %>
+      <% end %>
+
+    </div>
+
   <div id="<%= results_list_id %>" class="hidden" data-search-target="results"></div>
 <% end %>
-
-
