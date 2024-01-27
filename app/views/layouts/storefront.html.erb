@@ -35,9 +35,9 @@
         <%= render BreadcrumbsComponent.new(
           taxon: @taxon,
           item_classes: 'text-body-xs text-gray-500',
-          separator_classes: 'text-body-xs text-gray-500 ml-2',
-          container_classes: 'flex gap-2',
-          wrapper_classes: 'wrapper mt-4'
+          separator_classes: 'text-body-xs text-gray-500 ml-2 ',
+          container_classes: 'flex gap-2 py-3',
+          wrapper_classes: 'px-5 lg:px-20 w-full mt-0 bg-purple-50'
         ) %>
         <% if flash_messages.present? %>
           <%= flash_messages %>
