@@ -1,4 +1,5 @@
 <%= render 'hero_slide' %>
+<%= render 'brand_logos' %>
 <%= render 'feature' %>
 <%= render 'featured_products', { products: @featured_products } if @featured_products.try(:any?) %>
 <%= render 'collection', { title: "Shop Collection", products: @collection_products } if @collection_products.try(:any?) %>
