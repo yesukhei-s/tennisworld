@@ -1,118 +1,96 @@
-<div id="wrapper" class="h-[70vh] flex rounded-10 border-3 border-black pb-5 justify-around items-center gap-5">
-    <div id="image-container" class="h-full w-screen overflow-hidden py-0 px-0 lg:px-20">
-        <div id="image-carousel" class="flex h-full w-full lg:w-8/10 justify-between relative items-end lg:items-center">
+<style>
+    .hero-swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-          <div>
-            <button class="w-14 h-14 active absolute z-20 cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full  transition duration-200 -translate-y-14 translate-x-28 sm:translate-x-32 md:translate-x-28 lg:translate-x-0 lg:-translate-y-6"  id="prev" onclick="prev()">
-              <i class="fa-solid fa-arrow-left"></i>
-            </button>  
-          </div>
+    @media (max-width: 640px) { 
+      .hero-swiper-slide {
+      width: 100% !important;
+      }
+      .swiper-button-next,
+      .swiper-button-prev {
+        display: none !important;
+      } 
+    }
+
+    .hero-swiper-slide {
+      width: 70%;
+    } 
+    .swiper-button-next:after,
+    .swiper-button-prev:after{
+    display:none;
+  }
+  </style>
 
 
-          <%# item 1 %>
-          <div class="slide-img w-full h-full relative transition duration-1000">
-            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
-
-            <div class="flex flex-col translate-x-0 -translate-y-4 lg:translate-x-6 max-w-sm sm:max-w-xl px-8 sm:px-24 justify-center h-full">
-              <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
-              <h1 class="text-white font-semibold text-2xl lg:text-4xl mb-4">Take care of your performance every day.</h1>
-              <p class="text-gray-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
-              <h2 class="text-white font-heading text-2xl lg:text-4xl font-semibold mb-6">$235.95</h2>
-              <a class="w-fit py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
-            </div>
-          </div>
-
-          <%# item 2 %>
-          <div class="h-full w-full slide-img absolute transition duration-1000">
-            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
-            <div class="max-w-sm sm:max-w-xl absolute translate-x-6 translate-y-6 mt-2 lg:mt-10 flex flex-col items-start px-8 sm:px-24">
-              <div class="px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
-              <h1 class="text-white font-semibold text-4xl mb-4">Take care of your performance every day.</h1>
-              <p class="text-gray-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
-              <h2 class="text-white font-heading text-2xl lg:text-4xl font-semibold mb-6">$235.95</h2>
-              <a class="py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
-            </div>
-          </div>
-
-          <%# item 3 %>
-          <div class="slide-img w-full h-full absolute transition duration-1000">
-            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
-
-            <div class="flex flex-col translate-x-0 -translate-y-4 lg:translate-x-6 max-w-sm sm:max-w-xl px-8 sm:px-24 justify-center h-full">
-              <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
-              <h1 class="text-white font-semibold text-2xl lg:text-4xl mb-4">Take care of your performance every day.</h1>
-              <p class="text-gray-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
-              <h2 class="text-white font-heading text-2xl lg:text-4xl font-semibold mb-6">$235.95</h2>
-              <a class="w-fit py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
-            </div>
-          </div>
-
-          <%# item 4 %>
-          <div class="slide-img w-full h-full absolute transition duration-1000">
-            <%= image_tag "hero/1.png", class: "h-full w-full object-cover lg:rounded-[50px] absolute px-0 lg:px-6 pb-6 lg:py-6" %>
-
-            <div class="flex flex-col translate-x-0 -translate-y-4 lg:translate-x-6 max-w-sm sm:max-w-xl px-8 sm:px-24 justify-center h-full">
-              <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-7">Sale</div>
-              <h1 class="text-white font-semibold text-2xl lg:text-4xl mb-4">Take care of your performance every day.</h1>
-              <p class="text-gray-300 text-sm mb-6">Build a well-presented brand that everyone will love.</p>
-              <h2 class="text-white font-heading text-2xl lg:text-4xl font-semibold mb-6">$235.95</h2>
-              <a class="w-fit py-3 px-4 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
-            </div>
-          </div>
-
-          
-          <div>
-            <button class="w-14 h-14 active absolute cursor-pointer p-2 bg-white hover:bg-purple-500 hover:text-white rounded-full -translate-x-40 sm:-translate-x-44 md:-translate-x-40 -translate-y-14 lg:-translate-y-6 lg:-translate-x-14 transition duration-200" id="next" onclick="next()">
-              <i class="fa-solid fa-arrow-right"></i>
-            </button>
-          </div>
-          
+  <div class="relative h-[400px] w-full sm:mt-5 mb-10">
+    <div class="swiper h-full w-full myHeroSwiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide hero-swiper-slide !flex items-center justify-center text-xl ">
+              <%= image_tag "hero/1.png", class: "!object-fit sm:rounded-2xl relative" %>
+              <div class="absolute left-10 md:left-20 w-[300px]">
+                <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-5">Sale</div>
+                <h1 class="text-white font-semibold text-xl lg:text-2xl mb-3">Take care of your performance every day.</h1>
+                <p class="text-gray-300 text-sm mb-4">Build a well-presented brand that everyone will love.</p>
+                <h2 class="text-white font-heading text-xl lg:text-2xl font-semibold mb-4">$235.95</h2>
+                <a class="w-fit py-2 px-3 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
+              </div>
         </div>
+        <div class="swiper-slide hero-swiper-slide !flex items-center justify-center text-xl ">
+              <%= image_tag "hero/1.png", class: "!object-fit sm:rounded-2xl relative" %>
+              <div class="absolute left-10 md:left-20 w-[300px]">
+                <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-5">Sale</div>
+                <h1 class="text-white font-semibold text-xl lg:text-2xl mb-3">Take care of your performance every day.</h1>
+                <p class="text-gray-300 text-sm mb-4">Build a well-presented brand that everyone will love.</p>
+                <h2 class="text-white font-heading text-xl lg:text-2xl font-semibold mb-4">$235.95</h2>
+                <a class="w-fit py-2 px-3 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
+              </div>
+        </div>
+        <div class="swiper-slide hero-swiper-slide !flex items-center justify-center text-xl ">
+              <%= image_tag "hero/1.png", class: "!object-fit sm:rounded-2xl relative" %>
+              <div class="absolute left-10 md:left-20 w-[300px]">
+                <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-5">Sale</div>
+                <h1 class="text-white font-semibold text-xl lg:text-2xl mb-3">Take care of your performance every day.</h1>
+                <p class="text-gray-300 text-sm mb-4">Build a well-presented brand that everyone will love.</p>
+                <h2 class="text-white font-heading text-xl lg:text-2xl font-semibold mb-4">$235.95</h2>
+                <a class="w-fit py-2 px-3 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
+              </div>
+        </div>
+        <div class="swiper-slide hero-swiper-slide !flex items-center justify-center text-xl ">
+              <%= image_tag "hero/1.png", class: "!object-fit sm:rounded-2xl relative" %>
+              <div class="absolute left-10 md:left-20 w-[300px]">
+                <div class="w-fit px-4 py-1 rounded-full bg-white uppercase text-rhino-700 text-xs font-bold tracking-widest font-heading mb-5">Sale</div>
+                <h1 class="text-white font-semibold text-xl lg:text-2xl mb-3">Take care of your performance every day.</h1>
+                <p class="text-gray-300 text-sm mb-4">Build a well-presented brand that everyone will love.</p>
+                <h2 class="text-white font-heading text-xl lg:text-2xl font-semibold mb-4">$235.95</h2>
+                <a class="w-fit py-2 px-3 bg-purple-500 rounded-sm text-center text-white text-sm font-medium hover:bg-purple-600 transition duration-200" href="#">Go to Collection</a>
+              </div>
+        </div>
+      </div>
+      <div class="swiper-button-next mr-[calc(30%/2-40px)] p-7 bg-white hover:bg-purple-500 rounded-full transition duration-200 text-black hover:text-white"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="swiper-button-prev ml-[calc(30%/2-30px)] p-7 bg-white hover:bg-purple-500 rounded-full transition duration-200 text-black hover:text-white"><i class="fa-solid fa-arrow-left"></i></div>
+
     </div>
-</div>
+  </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-
-<script>
-
-  const wrapper = document.querySelector('#wrapper')
-  const carousel = document.querySelector('#image-carousel')
-  const images = document.querySelectorAll('.slide-img')
-  const btn = document.querySelectorAll('button')
-  const previous = document.querySelector('#prev')
-  const nxt = document.querySelector('#next')
-
-
-  images.forEach((slide,index)=>{
-      slide.style.left = `${index * 100}%`
-  })
-  let counter = 0;
-
-  const slideImage = ()=>{
-      images.forEach(
-          (e) => {
-              e.style.transform = `translateX(-${counter*100}%)`
-          }
-      )
-  }
-
-  const prev = ()=>{
-      if(counter > 0){
-          
-          counter --;
-          slideImage();
-          console.log(counter);
-          
-      }
-  }
-  const next = ()=>{
-      if(counter <= (images.length - 2)){
-          
-          counter ++;
-          slideImage();
-          console.log(counter);
-          
-      }
-  }
-
-</script>
+  <script>
+    var swiper1 = new Swiper(".myHeroSwiper", {
+      autoplay: {
+        delay: 5000,
+      },
+      loop: true,
+      speed: 1000,
+      slidesPerView: "auto",
+      centeredSlides: true,
+      spaceBetween: 40,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
