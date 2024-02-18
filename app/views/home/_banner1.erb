@@ -1,7 +1,56 @@
+<style>
+     figure {
+          width: 300px;
+          height: 200px;
+          margin: 0;
+          padding: 0;
+          background: #fff;
+          overflow: hidden;
+     }
+     figure:hover+span {
+          bottom: -36px;
+          opacity: 1;
+     }
+
+     /* Shine */
+     .hover14 figure {
+          position: relative;
+     }
+     .hover14 figure::before {
+          position: absolute;
+          top: 0;
+          left: -75%;
+          z-index: 2;
+          display: block;
+          content: '';
+          width: 50%;
+          height: 100%;
+          background: -webkit-linear-gradient(left, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+          background: linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,.3) 100%);
+          -webkit-transform: skewX(-25deg);
+          transform: skewX(-25deg);
+     }
+     .hover14 figure:hover::before {
+          -webkit-animation: shine .75s;
+          animation: shine .75s;
+     }
+     @-webkit-keyframes shine {
+          100% {
+               left: 125%;
+          }
+     }
+     @keyframes shine {
+          100% {
+               left: 125%;
+          }
+     }
+</style>
+
+
 <section class="wrapper pt-3 pb-14 md:pb-24">
-  <div class="flex flex-col md:flex-row w-full justify-between gap-y-4">
-    <%= image_tag "banners/banner-1.jpg", class: "w-full md:w-[calc(33%-10px)]"%>
-    <%= image_tag "banners/banner-2.jpg", class: "w-full md:w-[calc(33%-10px)]"%>
-    <%= image_tag "banners/banner-3.jpg", class: "w-full md:w-[calc(33%-10px)]"%>
+  <div class="flex flex-col md:flex-row w-full justify-between gap-y-4 hover14">
+    <figure class="w-full md:w-[calc(33%-10px)]"><%= image_tag "banners/banner-1.jpg", class: "w-full"%></figure>
+    <figure class="w-full md:w-[calc(33%-10px)]"><%= image_tag "banners/banner-2.jpg", class: "w-full"%></figure>
+    <figure class="w-full md:w-[calc(33%-10px)]"><%= image_tag "banners/banner-3.jpg", class: "w-full"%></figure>
   </div>
 </section>
