@@ -1,4 +1,194 @@
 <section class="wrapper pt-3 pb-14 md:pb-24">
+  <div class="text-center md:text-left font-heading font-semibold text-h5 md:text-h3 pb-4">Онцлох Бараанууд</div>
+  <div class="border flex w-full">
+    <div class="hidden md:block flex">
+      <%= image_tag "banners/banner1.jpg", class: "h-[464px]" %>
+      <%= image_tag "banners/banner1.jpg", class: "h-[464px] lg:hidden mt-4" %>
+    </div>
+    <div class=" h-full !w-full">
+          <div class="w-full flex flex-wrap -mb-8 gap-y-4 justify-between m-x-auto">
+
+            <!-- Loop erguuleh, 12 items -->
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <!-- <span class="relative z-10 inline-block py-1 px-3 text-[8px] text-white font-bold bg-orange-500 uppercase rounded-full">Limited</span> -->
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[1].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[0].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[0].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[0].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[1].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[0].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[2].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[1].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[1].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start !h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[2].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+            <div class="w-[calc(50%-8px)] md:w-1/3 lg:w-1/4 xl:w-1/6 pl-0 md:pl-5">
+              <a class="relative flex flex-col items-start h-56 sm:h-56 pt-4 pb-2 px-2 bg-slate-100 rounded-xl border-2 border-transparent hover:border-purple-500 transition duration-150 overflow-hidden" href="#">
+                <% image = products[0].gallery.images.second || products[0].gallery.images.first %>
+                <%= render(ImageComponent.new(
+                  image: image,
+                  size: :small,
+                  class: 'absolute top-0 left-1/2 mt-4 transform -translate-x-1/2 object-cover'
+                )) %>
+                <div class="relative z-10 w-full px-2 mt-auto text-center">
+                  <span class="block text-body-sm text-rhino-500 mb-1"><%= truncate(products[0].name, length: 15) %></span>
+                  <span class="block text-base font-bold text-rhino-300"><%= products[0].price %> ₮</span>
+                </div>
+              </a>
+            </div>
+
+          </div>
+        </div>
+  </div>
+</section>
+
+
+<!--
+<section class="wrapper pt-3 pb-14 md:pb-24">
   <div class="grid-container">
     <div class="col-span-full md:col-span-8 md:max">
       <%= render 'products/featured_product_card', { product: products[0], size: 'big' } %>
@@ -14,3 +204,4 @@
     </div>
   </div>
 </section>
+-->
